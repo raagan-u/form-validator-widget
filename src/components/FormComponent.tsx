@@ -9,8 +9,9 @@ interface CustomFormProps {
 const FormComponent: React.FC<CustomFormProps> = ({ onSubmit, children, className }) => {
 	const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
-
+		
 		const FormData: Record<string, any> = {};
+		
 		React.Children.forEach(children, (child) => {
 			if (React.isValidElement(child) && child.props.name) {
 				FormData[child.props.name] = child.props.value;
@@ -22,8 +23,14 @@ const FormComponent: React.FC<CustomFormProps> = ({ onSubmit, children, classNam
 
 	return (
 		<div className={className}>
-			<div>{children}</div>
-			<button type='submit' onClick={handleSubmit}>SUBMIT</button>
+			{
+				React.Children.map(children, (child) => {
+					if ( React.isValidElement(child) && child.props.type === "submit") {
+						return React.cloneElement( child as React.ReactElement<any>, { onClick: handleSubmit});
+					}
+					return child;
+				})
+			}
 		</div>
 	);
 }

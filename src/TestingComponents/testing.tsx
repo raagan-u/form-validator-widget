@@ -11,7 +11,7 @@ function Testing() {
 			<FormComponent onSubmit={FormHandler}>
 			<input
 				type="text"
-				name="name"  // Make sure this matches the key expected in the FormData object
+				name="name"
 				value={name}
 				onChange={(e) => setName(e.target.value)}
 				placeholder="name"
