@@ -15,6 +15,9 @@ const FormComponent: React.FC<CustomFormProps> = ({ onSubmit, children, classNam
 		React.Children.forEach(children, (child) => {
 			if (React.isValidElement(child) && child.props.name) {
 				FormData[child.props.name] = child.props.value;
+				if(child.props.selectedValue) {
+					FormData[child.props.name] = child.props.selectedValue;
+				}
 			}
 		})
 

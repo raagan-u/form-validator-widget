@@ -1,39 +1,19 @@
-import React, { useState } from "react";
-import { sanitizeInput } from "../utils/sanitizeInput";
+import InputComponent from "./InputComponent";
+
 
 interface PasswordInputProps {
-  validate?: (value: string) => string;
-  [key: string]: any; // Additional props
+  [key: string]: any;
 }
 
 const PasswordInput = ({ validate, ...props }: PasswordInputProps) => {
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  // Handle password change
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const rawPassword = e.target.value;
-
-    // Sanitize the input value
-    const sanitizedPassword = sanitizeInput(rawPassword);
-    setPassword(sanitizedPassword);
-
-    // Perform validation if provided
-    if (validate) {
-      const validationError = validate(sanitizedPassword);
-      setError(validationError || "");
-    }
-  };
-
+  
   return (
     <div>
-      <input
+      <InputComponent
         type="password"
-        value={password}
-        onChange={handleChange}
-        {...props} // Additional props like name, placeholder, etc.
+        validate={validate}
+        {...props}
       />
-      {error && <div style={{ color: "red" }}>{error}</div>}
     </div>
   );
 };

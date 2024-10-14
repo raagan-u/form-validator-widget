@@ -1,19 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+export { default as InputComponent} from "./components/InputComponent";
+export { default as FormComponent} from "./components/FormComponent";
+export { default as EmailInput} from "./components/EmailInput";
+export { default as PasswordInput} from "./components/PasswordInput";
+export { default as usernameInput} from "./components/UsernameInput";
+export { default as DateInput} from "./components/DateInput";
+export { default as FileInput} from "./components/FileInput";
+export { default as RadioButton } from "./components/RadioButton";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export { sanitizeInput } from './utils/sanitizeInput';
+export { validatePassword } from './utils/validatePassword';
+export { default as useDebounce } from './utils/useDebounce' 
