@@ -9,12 +9,12 @@ export default {
   input: 'src/index.tsx',  // Entry point for your package
   output: [
     {
-      file: 'dist/index.cjs.js',  // CommonJS format
+      dir: 'dist',  // CommonJS format
       format: 'cjs',
       sourcemap: true,
     },
     {
-      file: 'dist/index.esm.js',  // ES module format
+      dir: 'dist',  // ES module format
       format: 'esm',
       sourcemap: true,
     },
